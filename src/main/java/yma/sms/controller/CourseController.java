@@ -20,17 +20,26 @@ public class CourseController {
         courseService.createCourse(courseDto);
 
     }
+
     @GetMapping
     public List<Course> getAllCourse(){
         return courseService.getAllCourse();
     }
+
     @PutMapping("/{courseId}")
     public void updateCourse(@PathVariable Integer courseId, @RequestBody CourseDto updateDto){
         courseService.updateCourse(courseId,updateDto);
     }
+
     @DeleteMapping("/{courseId}")
     public void deleteCourse(@PathVariable Integer courseId){
         courseService.deleteCourse(courseId);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Course> getCourseById(@PathVariable Integer id) {
+        Course course = courseService.getCourseById(id);
+        return ResponseEntity.ok(course);
     }
 
 

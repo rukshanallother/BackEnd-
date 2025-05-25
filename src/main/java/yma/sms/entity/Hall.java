@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Course {
+public class Hall {
     // Specifies the primary key of the entity
     @Id
     // Auto-generates the primary key value using the database's identity column (auto-increment)
@@ -18,27 +18,23 @@ public class Course {
     private int id;
 
     private String code;
-
-
-    // Field to store the name of the course
+    private int capacity;
+    private int ac;
+    private int projector;
     private String name;
 
-    // Getter method for 'id'
     public int getId() {
         return id;
     }
 
-    // Setter method for 'id'
     public void setId(int id) {
         this.id = id;
     }
 
-    // Getter method for 'name'
     public String getName() {
         return name;
     }
 
-    // Setter method for 'name'
     public void setName(String name) {
         this.name = name;
     }
@@ -50,4 +46,16 @@ public class Course {
     public void setCode(String code) {
         this.code = code;
     }
+
+    public int getCapacity() { return capacity; }
+
+    public void setCapacity(int capacity) { this.capacity = capacity; }
+
+    public int getAc() { return ac; }
+
+    public void setAc(int ac) { this.ac = ac;}
+
+    public int getProjector() { return projector; }
+
+    public void setProjector(int projector) { this.projector = projector; }
 }

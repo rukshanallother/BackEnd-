@@ -20,6 +20,7 @@ public class CourseService {
     public void createCourse(CourseDto createDto) {
         Course course = new Course();                       // Create a new instance of the Course entity
         course.setName(createDto.getName());                // Set the course name using the value given in the DTO
+        course.setCode(createDto.getCode());
         courseRepository.save(course);                      // Save the course entity to the database using the repository
     }
 
@@ -32,12 +33,18 @@ public class CourseService {
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new RuntimeException("Course Not Found"));
         course.setName(updateDto.getName());
+        course.setCode(updateDto.getCode());
         courseRepository.save(course);
     }
 
     public void deleteCourse(Integer courseId) {
         courseRepository.deleteById(courseId);
     }
+
+    public Course getCourseById(Integer id) {
+        return courseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Course not found"));
+}
 }
 
 
