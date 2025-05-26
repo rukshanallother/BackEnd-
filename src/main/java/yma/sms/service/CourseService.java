@@ -17,11 +17,14 @@ public class CourseService {
     private CourseRepository courseRepository;
 
     // Method createCourse works with data received in CourseDto
-    public void createCourse(CourseDto createDto) {
+    public Course createCourse(CourseDto createDto) {
         Course course = new Course();                       // Create a new instance of the Course entity
+
         course.setName(createDto.getName());                // Set the course name using the value given in the DTO
+        course.setSlug(createDto.getSlug());
         course.setCode(createDto.getCode());
-        courseRepository.save(course);                      // Save the course entity to the database using the repository
+
+        return courseRepository.save(course);                      // Save the course entity to the database using the repository
     }
 
     public List<Course> getAllCourse() {

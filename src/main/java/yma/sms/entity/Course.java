@@ -1,9 +1,6 @@
 package yma.sms.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,43 +8,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Course {
-    // Specifies the primary key of the entity
     @Id
-    // Auto-generates the primary key value using the database's identity column (auto-increment)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String code;
-
-
-    // Field to store the name of the course
     private String name;
 
-    // Getter method for 'id'
-    public int getId() {
-        return id;
-    }
+    @Column(unique = true)
+    private String slug;
 
-    // Setter method for 'id'
-    public void setId(int id) {
-        this.id = id;
-    }
+    @Column(unique = true)
+    private String code;
 
-    // Getter method for 'name'
-    public String getName() {
-        return name;
-    }
-
-    // Setter method for 'name'
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 }

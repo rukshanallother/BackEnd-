@@ -56,6 +56,5 @@ public class Guardian {
     public void setCode(String code) {
     }
 
-    public void setQualification(String qualification) {
-    }
+
 }

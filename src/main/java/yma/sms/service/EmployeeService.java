@@ -13,8 +13,9 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public void createEmployee(EmployeeDto dto) {
+    public Employee createEmployee(EmployeeDto dto) {
         Employee employee = new Employee();
+
         employee.setFirstName(dto.getFirstName());
         employee.setLastName(dto.getLastName());
         employee.setNic(dto.getNic());
@@ -25,16 +26,18 @@ public class EmployeeService {
         employee.setDob(dto.getDob());
         employee.setMobile(dto.getMobile());
         employee.setCode(dto.getCode());
-        employeeRepository.save(employee);
+
+        return employeeRepository.save(employee);
     }
 
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
-    public void updateEmployee(Integer id, EmployeeDto dto) {
+    public Employee updateEmployee(Integer id, EmployeeDto dto) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
+
         employee.setFirstName(dto.getFirstName());
         employee.setLastName(dto.getLastName());
         employee.setNic(dto.getNic());
@@ -45,7 +48,8 @@ public class EmployeeService {
         employee.setDob(dto.getDob());
         employee.setMobile(dto.getMobile());
         employee.setCode(dto.getCode());
-        employeeRepository.save(employee);
+
+        return employeeRepository.save(employee);
     }
 
     public void deleteEmployee(Integer id) {

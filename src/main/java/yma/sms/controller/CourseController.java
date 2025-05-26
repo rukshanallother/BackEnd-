@@ -7,6 +7,7 @@ import yma.sms.dto.CourseDto;
 import yma.sms.entity.Course;
 import yma.sms.service.CourseService;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -16,9 +17,10 @@ public class CourseController {
     private CourseService courseService;
 
     @PostMapping
-    public void createCourse(@RequestBody CourseDto courseDto){
-        courseService.createCourse(courseDto);
-
+    public ResponseEntity<Course> createCourse(@RequestBody CourseDto courseDto){
+        Course course = courseService.createCourse(courseDto);
+        URI location = URI.create("/courses" + course.getSlug());
+        return ResponseEntity.created(location).body(course);
     }
 
     @GetMapping
