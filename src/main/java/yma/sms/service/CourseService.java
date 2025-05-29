@@ -1,9 +1,11 @@
 package yma.sms.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import yma.sms.dto.CourseDto;
 import yma.sms.entity.Course;
+import yma.sms.exception.BadRequestException;
 import yma.sms.repository.CourseRepository;
 
 import java.util.List;
@@ -18,6 +20,9 @@ public class CourseService {
 
     // Method createCourse works with data received in CourseDto
     public Course createCourse(CourseDto createDto) {
+        if (courseRepository.existsBySlug(createDto.getSlug())) {
+            throw new BadRequestException("Course with slug '" + createDto.getSlug() + "' already exists.");
+        }
         Course course = new Course();                       // Create a new instance of the Course entity
 
         course.setName(createDto.getName());                // Set the course name using the value given in the DTO

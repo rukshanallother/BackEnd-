@@ -8,10 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.*;
 import yma.sms.dto.AuthResponse;
 import yma.sms.dto.LoginRequest;
 import yma.sms.dto.RegisterRequest;
@@ -26,6 +23,8 @@ import yma.sms.security.JwtUtils;
 import java.util.HashSet;
 import java.util.Set;
 
+@RestController
+@RequestMapping("/api/auth")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;

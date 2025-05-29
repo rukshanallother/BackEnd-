@@ -43,7 +43,7 @@ public class SecurityConfig  {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/settings/**").permitAll()
-//                .requestMatchers("/api/courses/**").hasRole("ADMIN")
+                .requestMatchers("/api/courses/**").permitAll()
                 .requestMatchers(
                         "/v3/api-docs/**",
                         "/swagger-ui/**",
@@ -61,7 +61,8 @@ public class SecurityConfig  {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("http://localhost:3006")); // Your Angular frontend origin
+        config.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         config.setAllowCredentials(true); // If your frontend sends cookies or Authorization headers
