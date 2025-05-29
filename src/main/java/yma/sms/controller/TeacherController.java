@@ -2,6 +2,7 @@ package yma.sms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import yma.sms.dto.TeacherDto;
 import yma.sms.entity.Teacher;
@@ -20,6 +21,7 @@ public class TeacherController {
         teacherService.createTeacher(teacherDto);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public List<Teacher> getAllTeachers(){
         return teacherService.getAllTeachers();

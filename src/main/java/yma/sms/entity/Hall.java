@@ -5,7 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Data
@@ -23,39 +25,4 @@ public class Hall {
     private int projector;
     private String name;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public int getCapacity() { return capacity; }
-
-    public void setCapacity(int capacity) { this.capacity = capacity; }
-
-    public int getAc() { return ac; }
-
-    public void setAc(int ac) { this.ac = ac;}
-
-    public int getProjector() { return projector; }
-
-    public void setProjector(int projector) { this.projector = projector; }
 }

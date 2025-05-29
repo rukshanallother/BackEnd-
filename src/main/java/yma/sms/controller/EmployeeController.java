@@ -16,8 +16,9 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping
-    public void createEmployee(@RequestBody EmployeeDto employeeDto){
-        employeeService.createEmployee(employeeDto);
+    public ResponseEntity<Employee> createEmployee(@RequestBody EmployeeDto employeeDto){
+        Employee employee = employeeService.createEmployee(employeeDto);
+        return ResponseEntity.ok(employee);
     }
 
     @GetMapping
@@ -26,13 +27,15 @@ public class EmployeeController {
     }
 
     @PutMapping("/{employeeId}")
-    public void updateEmployee(@PathVariable Integer employeeId, @RequestBody EmployeeDto updateDto){
-        employeeService.updateEmployee(employeeId, updateDto);
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Integer employeeId, @RequestBody EmployeeDto updateDto){
+        Employee employee = employeeService.updateEmployee(employeeId, updateDto);
+        return ResponseEntity.ok(employee);
     }
 
     @DeleteMapping("/{employeeId}")
-    public void deleteEmployee(@PathVariable Integer employeeId){
+    public ResponseEntity<Void> deleteEmployee(@PathVariable Integer employeeId){
         employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")

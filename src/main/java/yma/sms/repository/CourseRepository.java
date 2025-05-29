@@ -5,4 +5,5 @@ import yma.sms.entity.Course;
 
 public interface CourseRepository extends JpaRepository<Course,Integer>{
 
+    boolean existsBySlug(String slug);
 }
